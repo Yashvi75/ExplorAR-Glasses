@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ExplorAR Glasses — Ultra Premium AR Intelligence" />
+  <title>ExplorAR Glasses | Future Tech Intelligence</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 🎨 Background Effects -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+  <div class="scanning-line"></div>
+
+  <!-- ═══ HEADER ══════════════════════════════════════════════════════════ -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">🕶️</span>
+        <span>EXPLOR<span class="accent">AR</span></span>
+      </div>
+      <nav class="nav-pills">
+        <button class="pill active" data-tab="dashboard" id="nav-dashboard">DASHBOARD</button>
+        <button class="pill" data-tab="context" id="nav-context">CONTEXT</button>
+        <button class="pill" data-tab="weather" id="nav-weather">WEATHER</button>
+        <button class="pill" data-tab="navigation" id="nav-navigation">NAVIGATE</button>
+        <button class="pill" data-tab="translation" id="nav-translation">TRANSLATE</button>
+        <button class="pill" data-tab="ocr" id="nav-ocr">OCR</button>
+        <button class="pill" data-tab="voice" id="nav-voice">VOICE</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ═══ MAIN ════════════════════════════════════════════════════════════ -->
+  <main class="main">
+
+    <!-- ── DASHBOARD ──────────────────────────────────────────────────── -->
+    <section class="tab-panel active" id="tab-dashboard">
+      <div class="hero">
+        <h1 class="hero-title">INTELLIGENCE <br> BEYOND SIGHT</h1>
+        <p class="hero-sub">The next generation of AR-powered travel assistants. Real-time data, processed by Gemini Pro.</p>
+        <div class="status-badge" id="backend-status">
+          <span class="dot pulsing"></span> SYSTEM INITIALIZING
+        </div>
+      </div>
+
+      <div class="card-grid">
+        <div class="dash-card" data-tab="context">
+          <div class="dash-icon">🏛️</div>
+          <h3>LANDMARK CONTEXT</h3>
+          <p>Instant historical and cultural data for any monument or city.</p>
+        </div>
+        <div class="dash-card" data-tab="weather">
+          <div class="dash-icon">🌤️</div>
+          <h3>LIVE WEATHER</h3>
+          <p>Hyper-local weather data with AI-generated travel summaries.</p>
+        </div>
+        <div class="dash-card" data-tab="navigation">
+          <div class="dash-icon">🗺️</div>
+          <h3>PRECISE NAVIGATION</h3>
+          <p>Real-time route guidance and distance mapping across India.</p>
+        </div>
+        <div class="dash-card" data-tab="translation">
+          <div class="dash-icon">🌐</div>
+          <h3>REAL-TIME TRANSLATE</h3>
+          <p>Holographic-ready text translation for over 100 languages.</p>
+        </div>
+        <div class="dash-card" data-tab="ocr">
+          <div class="dash-icon">📷</div>
+          <h3>VISUAL OCR</h3>
+          <p>Extract text from the world around you via camera or upload.</p>
+        </div>
+        <div class="dash-card" data-tab="voice">
+          <div class="dash-icon">🎙️</div>
+          <h3>VOICE COMMAND</h3>
+          <p>Natural language processing powered by Gemini intelligence.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTEXT ────────────────────────────────────────────────────── -->
+    <section class="tab-panel" id="tab-context">
+      <div class="panel-container">
+        <div class="panel-header">
+          <h2>🏛️ CONTEXTUAL INTEL</h2>
+          <p>Identify any Indian landmark or city for real-time analysis.</p>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Location Name</label>
+          <input type="text" id="context-input" class="field" placeholder="e.g. Hawa Mahal, Kota, Taj Mahal..." />
+        </div>
+        <button class="btn-primary" id="context-btn" onclick="fetchContext()">SCAN LOCATION</button>
+        <div class="result-box" id="context-result"></div>
+      </div>
+    </section>
+
+    <!-- ── WEATHER ────────────────────────────────────────────────────── -->
+    <section class="tab-panel" id="tab-weather">
+      <div class="panel-container">
+        <div class="panel-header">
+          <h2>🌤️ ATMOSPHERIC DATA</h2>
+          <p>Live meteorological updates from OpenWeather systems.</p>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Target City</label>
+          <input type="text" id="weather-input" class="field" placeholder="e.g. Jaipur, Mumbai, Kota..." />
+        </div>
+        <button class="btn-primary" id="weather-btn" onclick="fetchWeather()">FETCH WEATHER</button>
+        <div class="result-box" id="weather-result"></div>
+      </div>
+    </section>
+
+    <!-- ── NAVIGATION ─────────────────────────────────────────────────── -->
+    <section class="tab-panel" id="tab-navigation">
+      <div class="panel-container">
+        <div class="panel-header">
+          <h2>🗺️ ROUTE MAPPING</h2>
+          <p>Step-by-step navigation data for the India region.</p>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Origin</label>
+          <input type="text" id="nav-source" class="field" placeholder="From: e.g. Delhi" />
+        </div>
+        <div class="field-group">
+          <label class="field-label">Destination</label>
+          <input type="text" id="nav-dest" class="field" placeholder="To: e.g. Jaipur" />
+        </div>
+        <div class="field-group">
+          <label class="field-label">Travel Mode</label>
+          <select id="nav-mode" class="field" style="background: rgba(0,0,0,0.3)">
+            <option value="driving">🚗 DRIVING</option>
+            <option value="walking">🚶 WALKING</option>
+            <option value="bicycling">🚴 BICYCLING</option>
+            <option value="transit">🚌 TRANSIT</option>
+          </select>
+        </div>
+        <button class="btn-primary" onclick="fetchNavigation()">GENERATE ROUTE</button>
+        <div class="result-box" id="navigation-result"></div>
+      </div>
+    </section>
+
+    <!-- ── TRANSLATION ────────────────────────────────────────────────── -->
+    <section class="tab-panel" id="tab-translation">
+      <div class="panel-container">
+        <div class="panel-header">
+          <h2>🌐 LANGUAGE ENGINE</h2>
+          <p>Translate any text instantly into global or local languages.</p>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Input Text</label>
+          <textarea id="translate-text" class="field" style="height: 120px" placeholder="Enter text to translate..."></textarea>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Target Language Code</label>
+          <input type="text" id="translate-lang" class="field" placeholder="e.g. hi (Hindi), ja (Japanese), fr (French)..." />
+        </div>
+        <button class="btn-primary" onclick="fetchTranslation()">PROCESS TRANSLATION</button>
+        <div class="result-box" id="translation-result"></div>
+      </div>
+    </section>
+
+    <!-- ── OCR ────────────────────────────────────────────────────────── -->
+    <section class="tab-panel" id="tab-ocr">
+      <div class="panel-container">
+        <div class="panel-header">
+          <h2>📷 VISUAL OCR SCAN</h2>
+          <p>Convert images to digital text via AR optical recognition.</p>
+        </div>
+        <div class="upload-zone" onclick="document.getElementById('ocr-file').click()">
+          <div class="upload-icon">📷</div>
+          <p>UPLOAD IMAGE SOURCE</p>
+          <small>PNG, JPG, WEBP SUPPORTED</small>
+          <input type="file" id="ocr-file" accept="image/*" style="display:none" onchange="previewAndOCR(event)" />
+        </div>
+        <img id="ocr-preview" style="display:none; width:100%; border-radius:12px; margin-bottom:20px; border:1px solid var(--border)" />
+        <div class="result-box" id="ocr-result"></div>
+      </div>
+    </section>
+
+    <!-- ── VOICE ──────────────────────────────────────────────────────── -->
+    <section class="tab-panel" id="tab-voice">
+      <div class="panel-container">
+        <div class="panel-header">
+          <h2>🎙️ INTELLIGENT VOICE</h2>
+          <p>Natural language processing powered by Gemini Pro.</p>
+        </div>
+        <div class="field-group" style="position:relative">
+          <label class="field-label">Voice Query (Speak or Type)</label>
+          <input type="text" id="voice-input" class="field" placeholder="e.g. How is the weather in Kota right now?" style="padding-right: 50px" />
+          <button id="mic-btn" onclick="startSpeechRecognition()" style="position:absolute; right:10px; bottom:10px; background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--primary)">🎙️</button>
+        </div>
+        <button class="btn-primary" onclick="fetchVoice()">SEND QUERY</button>
+        <div class="result-box" id="voice-result"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ══════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <p>EXPLORAR GLASSES v2.0 &nbsp;|&nbsp; GEMINI PRO CORE &nbsp;|&nbsp; DESIGNED FOR THE FUTURE</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
