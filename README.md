@@ -207,12 +207,11 @@ pip install -r requirements.txt
 ### 4. Add environment variables
 Create a `.env` file inside `backend/`:
 
-env
-OPENAI_API_KEY=your_key_here
-WEATHER_API_KEY=your_key_here
-GEOCODING_API_KEY=your_key_here
-TRANSLATION_API_KEY=your_key_here
-OCR_API_KEY=your_key_here
+- OPENAI_API_KEY=your_key_here
+- WEATHER_API_KEY=your_key_here
+- GEOCODING_API_KEY=your_key_here
+- TRANSLATION_API_KEY=your_key_here
+- OCR_API_KEY=your_key_here
 
 
 ### 5. Run the backend
